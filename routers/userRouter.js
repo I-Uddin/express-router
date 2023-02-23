@@ -39,7 +39,7 @@ router.post('/', [check("name").not().isEmpty().trim()], (req, res) => {
     if(!errors.isEmpty()){
         res.json({error: errors.array()})
     } else {
-        const newUser = {name: "User 5", age: 21}
+        const newUser = req.body;
         users.push(newUser);
         res.json(users);
     }
@@ -49,8 +49,6 @@ router.post('/', [check("name").not().isEmpty().trim()], (req, res) => {
 router.put('/:id', (req, res) => {
     const id = req.params.id;
     const index = id - 1;
-    users[index].name = "User 6";
-    users[index].age = 34;
     res.json(users);
 })
 
